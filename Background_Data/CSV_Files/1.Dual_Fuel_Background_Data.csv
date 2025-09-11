@@ -1,4 +1,4 @@
-Engine Size [kWel];250;;;500;;;750;;;1000;;
+Engine Size [kWel];250;250;250;500;500;500;750;750;750;1000;1000;1000
 Engine Load[%];Oil change [opr. h];Diesel Consumption [L/h];Maintenance Period [opr. h];Oil change [opr. h];Diesel Consumption [L/h];Maintenance Period [opr. h];Oil change [opr. h];Diesel Consumption [L/h];Maintenance Period [opr. h];Oil change [opr. h];Diesel Consumption [L/h];Maintenance Period [opr. h]
 20;3000;2;15000;4000;3;14000;6000;4;13000;8000;5;12000
 40;2000;2;10000;3000;3;9000;5000;4;8000;6000;5;7000
