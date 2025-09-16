@@ -3,120 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoCaGas - Ökobilanz für Deponiegasverwertung</title>
+    <title>LoCaGas - Life cycle assessment for landfill gas utilization</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>LoCaGas - Ökobilanz für Deponiegasverwertung</h1>
+            <h1>LoCaGas - Life cycle assessment for landfill gas utilization</h1>
         </header>
 
         <div class="tabs">
-            <button class="tab-button active" data-tab="calculation">Berechnung & Ergebnisse</button>
-            <button class="tab-button" data-tab="intermediate">Zwischenberechnungen</button>
+            <button class="tab-button active" data-tab="calculation">Calculation & Results</button>
+            <button class="tab-button" data-tab="intermediate">Interim Calculations</button>
         </div>
 
         <div class="tab-content active" id="calculation-tab">
             <div class="input-section">
-                <h2>Eingabeparameter</h2>
+                <h2>Input Parameters</h2>
                 
                 <div class="input-group">
-                    <label for="gas-volume">Gasmenge zu Beginn [m³/h]</label>
+                    <label for="gas-volume">Gas volume in year 1 [m³/h]</label>
                     <input type="number" id="gas-volume" placeholder="z.B. 500" value="500">
                 </div>
                 
                 <div class="input-group">
-                    <label for="methane-content">Methangehalt zu Beginn [%]</label>
+                    <label for="methane-content">Methane content in year 1 [%]</label>
                     <input type="number" id="methane-content" placeholder="z.B. 55" value="50" min="0" max="100">
                 </div>
                 
                 <div class="input-group">
-                    <label for="time-period">Betrachtungszeitraum [Jahre]</label>
+                    <label for="time-period">Observation Period [Years]</label>
                     <input type="number" id="time-period" placeholder="z.B. 10" value="10" min="1" max="50">
                 </div>
                 
                 <div class="checkbox-group">
                     <input type="checkbox" id="manual-gas-input">
-                    <label for="manual-gas-input">Manuelle Eingabe der Gasmenge</label>
+                    <label for="manual-gas-input">Manual Entry of Gas Quantity</label>
                 </div>
                 
                 <div class="manual-input-container" id="manual-gas-container" style="display: none;">
-                    <h3>Jährliche Gasmenge [m³/h]</h3>
+                    <h3>Annual Gas Quantity [m³/h]</h3>
                     <div id="manual-gas-entries"></div>
                 </div>
                 
                 <div class="checkbox-group">
                     <input type="checkbox" id="manual-methane-input">
-                    <label for="manual-methane-input">Manuelle Eingabe des Methangehalts</label>
+                    <label for="manual-methane-input">Manual Entry of Methane Content</label>
                 </div>
                 
                 <div class="manual-input-container" id="manual-methane-container" style="display: none;">
-                    <h3>Jährlicher Methangehalt [%]</h3>
+                    <h3>Annual Methane Content [%]</h3>
                     <div id="manual-methane-entries"></div>
                 </div>
                 
-                <button id="calculate-button" class="calculate-btn">Berechnung starten</button>
+                <button id="calculate-button" class="calculate-btn">Start Calculation</button>
             </div>
 
             <div class="output-section">
                 <div class="info-panel">
                     <div class="info-item">
-                        <span>Ausgewählter Motor:</span>
+                        <span>Selected engine:</span>
                         <span id="selected-engine">-</span>
                     </div>
                     <div class="info-item">
-                        <span>Betriebsjahre:</span>
+                        <span>Years of Operation:</span>
                         <span id="operational-years">-</span>
                     </div>
                 </div>
 
                 <div class="chart-controls">
                     <div class="control-group">
-                        <label for="impact-category">Wirkungskategorie für Balkendiagramm:</label>
+                        <label for="impact-category">Impact Category for Barchart:</label>
                         <select id="impact-category"></select>
                     </div>
                     
                     <div class="control-group">
-                        <label for="line-impact-category">Wirkungskategorie für Liniendiagramm:</label>
+                        <label for="line-impact-category">Impact Category for Line Graph:</label>
                         <select id="line-impact-category"></select>
                     </div>
                     
                     <div class="control-group">
-                        <label for="stage-dropdown">Lebensphase:</label>
+                        <label for="stage-dropdown">Stage of Life:</label>
                         <select id="stage-dropdown">
-                            <option value="Gesamt">Gesamt</option>
+                            <option value="Gesamt">Total</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="charts-container">
                     <div class="chart-wrapper">
-                        <h3>Beiträge der Lebensphasen</h3>
+                        <h3>Contributions from different life stages</h3>
                         <canvas id="bar-chart"></canvas>
                     </div>
                     
                     <div class="chart-wrapper">
-                        <h3>Zeitliche Entwicklung der Auswirkungen</h3>
+                        <h3>Temporal Development of the Effects</h3>
                         <canvas id="line-chart"></canvas>
                     </div>
                 </div>
 
                 <div class="results-table-container">
-                    <h3>Gesamtergebnisse nach Lebensphase</h3>
+                    <h3>Overall results by Life Stage</h3>
                     <div class="table-controls">
-                        <label for="table-stage-dropdown">Lebensphase:</label>
+                        <label for="table-stage-dropdown">Stage of Life:</label>
                         <select id="table-stage-dropdown">
-                            <option value="Gesamt">Gesamt</option>
+                            <option value="Gesamt">Total</option>
                         </select>
                     </div>
                     <div class="table-scroll">
                         <table id="results-table">
                             <thead>
                                 <tr>
-                                    <th>Wirkungskategorie</th>
-                                    <th>Gesamtwert</th>
+                                    <th>Impact Category</th>
+                                    <th>Total Value</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -129,7 +129,7 @@
         <div class="tab-content" id="intermediate-tab">
             <div class="intermediate-section">
                 <div class="intermediate-table">
-                    <h3>Jährliche Entwicklungen</h3>
+                    <h3>Anual Development</h3>
                     <div class="table-scroll">
                         <table id="yearly-table">
                             <thead></thead>
@@ -139,7 +139,7 @@
                 </div>
                 
                 <div class="intermediate-table">
-                    <h3>Motorauslastung im ersten Jahr</h3>
+                    <h3>Engine Load in Year 1</h3>
                     <div class="table-scroll">
                         <table id="engine-table">
                             <thead></thead>
